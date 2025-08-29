@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="p-5 bg-light rounded-3 mb-4">
+  <h1 class="display-6">Welcome to <span class="brand-gradient">KamGrow Pharma</span></h1>
+  <p class="lead">Search medicines, upload prescriptions, and get quick delivery.</p>
+  <a href="/catalog/" class="btn btn-primary btn-lg">Shop Medicines</a>
+  <a href="/prescriptions/upload/" class="btn btn-outline-primary btn-lg">Upload Prescription</a>
+</div>
+<h4 class="mb-3">Popular Categories</h4>
+<div class="row row-cols-1 row-cols-md-3 g-3">
+  {% for c in categories %}
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ c.name }}</h5>
+        <a href="{% url 'catalog:category' c.slug %}" class="stretched-link">Browse</a>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p class="text-muted">Add categories in admin to show them here.</p>
+  {% endfor %}
+</div>
+{% endblock %}

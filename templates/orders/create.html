@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Checkout</h2>
+<form method="post" class="row g-3">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <div><strong>Order Total:</strong> ₹ {{ cart.get_total_price }}</div>
+  <button class="btn btn-success">Place Order (COD)</button>
+</form>
+{% endblock %}
