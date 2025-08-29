@@ -20,11 +20,26 @@
   font-weight: 700;
   font-family: 'Montserrat', Arial, sans-serif;
   letter-spacing: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #fff;
+  width: fit-content;
+  margin: 0 auto;
+  animation: typing 3s steps(25, end), blink 0.7s infinite;
 }
 .hero p {
   font-size: 1.25rem;
   margin-top: 15px;
   opacity: 0.9;
+}
+
+/* Typing Effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink {
+  50% { border-color: transparent }
 }
 
 /* Buttons */
@@ -75,6 +90,45 @@
 .card:hover .card-img-top {
   transform: scale(1.05);
 }
+
+/* ✅ Responsive Fixes */
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero p {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 15px;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .section-title {
+    font-size: 1.6rem;
+  }
+}
+@media (max-width: 576px) {
+  .hero {
+    padding: 60px 10px;
+  }
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  .hero p {
+    font-size: 0.95rem;
+  }
+  .btn-custom {
+    padding: 10px 22px;
+    font-size: 0.9rem;
+  }
+}
 </style>
 
 <!-- Hero -->
@@ -91,7 +145,7 @@
 <!-- About -->
 <section id="about" class="container py-5">
   <div class="row align-items-center">
-    <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-right">
+    <div class="col-md-6 mb-4 mb-md-0 text-center" data-aos="fade-right">
       <img src="{% static 'img/logo.jpg' %}"
            alt="KamGrow Pharma Logo"
            class="img-fluid rounded shadow-lg">
@@ -122,73 +176,75 @@
   <div class="container">
     <h2 class="section-title" data-aos="zoom-in">Our Core Strengths</h2>
     <div class="row g-4">
-      <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
         <div class="card feature-card border-0 shadow-sm h-100 text-center p-4">
           <span style="font-size:2rem;">🏭</span>
           <h5 class="mt-3">Manufacturing Excellence</h5>
           <p>State-of-the-art facilities with strict quality control standards.</p>
         </div>
       </div>
-      <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
         <div class="card feature-card border-0 shadow-sm h-100 text-center p-4">
           <span style="font-size:2rem;">🧪</span>
           <h5 class="mt-3">Innovative R&D</h5>
           <p>Continuous investment in research for advanced formulations.</p>
         </div>
       </div>
-      <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+      <div class="col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
         <div class="card feature-card border-0 shadow-sm h-100 text-center p-4">
           <span style="font-size:2rem;">🌱</span>
           <h5 class="mt-3">Quality & Safety</h5>
           <p>Commitment to safe, effective, and globally accepted medicines.</p>
         </div>
       </div>
-      <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+      <div class="col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
         <div class="card feature-card border-0 shadow-sm h-100 text-center p-4">
           <span style="font-size:2rem;">🌍</span>
           <h5 class="mt-3">Global Reach</h5>
-          <p>Serving patients in India and expanding to 30+ countries.</p>
+          <p>Serving patients in India and expanding to others countries.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 <!-- Leadership Team -->
 <section class="py-5 bg-light">
   <div class="container">
     <h2 class="section-title" data-aos="zoom-in">Our Leadership Team</h2>
     <div class="row g-4">
-      <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
         <div class="card team-card text-center p-4 shadow-sm">
-          <h5>K K Yadav</h5>
+          <h5>Mr. K K Yadav</h5>
           <p>Director</p>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
         <div class="card team-card text-center p-4 shadow-sm">
-          <h5>Gaurav</h5>
+          <h5>Mr. Gaurav</h5>
           <p>Director</p>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-delay="300">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
         <div class="card team-card text-center p-4 shadow-sm">
-          <h5>MD Sarukh</h5>
-          <p>General Manager</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-delay="400">
-        <div class="card team-card text-center p-4 shadow-sm">
-          <h5>Rohit Kumar</h5>
+          <h5>Mr. Rohit Kumar</h5>
           <p>Executive Manager</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="card team-card text-center p-4 shadow-sm">
+          <h5>Mr. MD Sarukh</h5>
+          <p>General Manager</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 <!-- Product Categories -->
 <section class="container py-5">
   <h2 class="section-title" data-aos="zoom-in">Our Product Range</h2>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
     {% for c in categories %}
     <div class="col" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:'1' }}00">
       <div class="card h-100 border-0 shadow-sm feature-card text-center">
