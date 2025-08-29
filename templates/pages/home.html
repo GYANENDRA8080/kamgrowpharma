@@ -1,248 +1,264 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<!-- AOS Animation CSS -->
+<!-- AOS CSS -->
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<!-- Font Awesome (Icons) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<!-- ✅ Sticky Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">KamGrow Pharma</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="#about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <style>
-/* Hero Section */
+/* Hero */
 .hero {
-  background: linear-gradient(rgba(29,78,216,0.85), rgba(29,78,216,0.85)),
-              url('https://images.unsplash.com/photo-1581090700227-4c4c1f1d8c4b?auto=format&fit=crop&w=1600&q=80') 
-              no-repeat center/cover;
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #1e40af 100%);
   color: #fff;
-  padding: 120px 20px;
+  padding: 140px 20px;
   text-align: center;
-  border-radius: 0 0 50px 50px;
+  border-radius: 0 0 40px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/cubes.png');
+  opacity: 0.05;
 }
 .hero h1 {
-  font-size: 3.2rem;
-  font-weight: 700;
-  font-family: 'Montserrat', Arial, sans-serif;
-  letter-spacing: 1px;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid #fff;
-  width: fit-content;
-  margin: 0 auto;
-  animation: typing 3s steps(25, end), blink 0.7s infinite;
+  font-size: 3rem;
+  font-weight: 800;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(to right, #ffffff, #dbeafe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .hero p {
   font-size: 1.25rem;
   margin-top: 15px;
-  opacity: 0.9;
+  opacity: 0.95;
 }
-
-/* Typing Effect */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-@keyframes blink {
-  50% { border-color: transparent }
-}
-
-/* Buttons */
 .btn-custom {
-  padding: 12px 28px;
+  padding: 12px 30px;
   font-weight: 600;
+  border-radius: 30px;
   transition: all 0.3s ease;
 }
 .btn-custom:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-}
-
-/* Features */
-.feature-card {
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  border-radius: 15px;
-}
-.feature-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 
 /* Section Titles */
 .section-title {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 2rem;
   color: #1d4ed8;
-  margin-bottom: 2rem;
   text-align: center;
+  margin-bottom: 2rem;
   position: relative;
 }
 .section-title::after {
-  content: '';
+  content: "";
   display: block;
   width: 80px;
-  height: 3px;
-  background: #1d4ed8;
-  margin: 10px auto 0;
+  height: 4px;
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+  margin: 12px auto 0;
   border-radius: 2px;
 }
 
-/* Product Cards */
+/* Feature Cards */
+.feature-card {
+  border-radius: 16px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+.feature-icon {
+  font-size: 2.2rem;
+  color: #2563eb;
+}
+
+/* About Us */
+#about {
+  background: linear-gradient(rgba(17,24,39,0.85), rgba(17,24,39,0.9)),
+              url("https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80") no-repeat center/cover;
+  padding: 80px 20px;
+  border-radius: 20px;
+  color: #fff;
+}
+#about p, #about li {
+  opacity: 0.95;
+}
+
+/* Team */
+.team-card {
+  border-radius: 16px;
+  transition: all 0.4s ease;
+}
+.team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+}
+
+/* Products */
+.card {
+  border-radius: 16px;
+  overflow: hidden;
+}
 .card-img-top {
-  border-radius: 12px 12px 0 0;
   transition: transform 0.4s ease;
 }
 .card:hover .card-img-top {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
-/* ✅ Responsive Fixes */
-@media (max-width: 992px) {
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-  .hero p {
-    font-size: 1.1rem;
-  }
+/* Contact */
+.contact-section {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: #fff;
+  padding: 80px 20px;
+  border-radius: 30px 30px 0 0;
 }
+.contact-section p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .hero {
-    padding: 80px 15px;
-  }
-  .hero h1 {
-    font-size: 2rem;
-  }
-  .hero p {
-    font-size: 1rem;
-  }
-  .section-title {
-    font-size: 1.6rem;
-  }
-}
-@media (max-width: 576px) {
-  .hero {
-    padding: 60px 10px;
-  }
-  .hero h1 {
-    font-size: 1.8rem;
-  }
-  .hero p {
-    font-size: 0.95rem;
-  }
-  .btn-custom {
-    padding: 10px 22px;
-    font-size: 0.9rem;
-  }
+  .hero h1 { font-size: 2.2rem; }
+  .hero p { font-size: 1rem; }
 }
 </style>
 
 <!-- Hero -->
 <section class="hero" data-aos="fade-down">
   <div class="container">
-    <h1 data-aos="zoom-in" data-aos-delay="200">KamGrow Pharma 💊</h1>
-    <p data-aos="fade-up" data-aos-delay="400">Innovating Healthcare • Building Trust • Delivering Quality</p>
-    <a href="#about" class="btn btn-light btn-lg mt-4 rounded-pill shadow btn-custom" data-aos="fade-up" data-aos-delay="600">
+    <h1 data-aos="zoom-in">KamGrow Pharma</h1>
+    <p data-aos="fade-up" data-aos-delay="300">Innovating Healthcare • Building Trust • Delivering Quality</p>
+    <a href="#about" class="btn btn-light mt-4 shadow btn-custom" data-aos="fade-up" data-aos-delay="600">
       Learn More
     </a>
   </div>
 </section>
 
-<!-- About -->
-<section id="about" class="container py-5">
-  <div class="row align-items-center">
-    <div class="col-md-6 mb-4 mb-md-0 text-center" data-aos="fade-right">
-      <img src="{% static 'img/logo.jpg' %}"
-           alt="KamGrow Pharma Logo"
-           class="img-fluid rounded shadow-lg">
-    </div>
-    <div class="col-md-6" data-aos="fade-left">
-      <h2 class="section-title">About Us</h2>
-      <p class="lead">
-        KamGrow Pharma is a growing pharmaceutical company from India, committed to providing 
-        <b>high-quality, affordable, and reliable medicines</b>. We believe good health should be within 
-        everyone’s reach, and we work every day to make it possible.
-      </p>
-      <ul class="list-unstyled fs-5">
-        <li>✅ WHO-GMP & ISO Certified Facilities</li>
-        <li>🧪 Research & Development Driven Formulations</li>
-        <li>🌍 Supplying Medicines Across India & Growing Internationally</li>
-        <li>🤝 Strong Partnerships with Healthcare Providers</li>
-      </ul>
-      <p class="mt-3">
-        With a focus on <b>innovation, quality, and patient care</b>, KamGrow Pharma aims to build a trusted name 
-        in healthcare and contribute to a healthier future for all.
-      </p>
-    </div>
+<!-- About Us -->
+<section id="about" class="my-5">
+  <div class="container text-center" data-aos="fade-up">
+    <h2 class="section-title text-white">About Us</h2>
+    <p class="lead">
+      At <b>KamGrow Pharma</b>, we are dedicated to improving lives through <b>affordable, innovative, and trusted medicines</b>.  
+      Our mission is to bridge the gap between quality healthcare and accessibility.  
+    </p>
+    <p class="lead">
+      At <b>KamGrow Pharma</b>, we believe healthcare should be <b>affordable, innovative, and accessible to all</b>.  
+      With world-class standards and a patient-first approach, we’re not just making medicines—<b>we’re building trust, health, and hope</b>.  
+    </p>
+
+    <ul class="list-unstyled fs-5 mt-3 text-start d-inline-block">
+      <li><i class="fas fa-hospital text-primary me-2"></i> Affordable & Accessible Healthcare Solutions</li>
+      <li><i class="fas fa-microscope text-success me-2"></i> Focus on Quality & Patient Safety</li>
+      <li><i class="fas fa-capsules text-danger me-2"></i> Growing Portfolio of Trusted Medicines</li>
+      <li><i class="fas fa-user-md text-info me-2"></i> Committed Team with Strong Vision & Values</li>
+      <li><i class="fas fa-handshake text-warning me-2"></i> Building Partnerships for Better Healthcare Access</li>
+    </ul>
+
+    <p class="mt-4">
+      With our <b>patient-first approach</b>, KamGrow Pharma is building a reputation as a reliable partner in healthcare.
+    </p>
   </div>
 </section>
 
-<!-- Core Strengths -->
+<!-- Strengths -->
 <section class="bg-light py-5">
   <div class="container">
     <h2 class="section-title" data-aos="zoom-in">Our Core Strengths</h2>
     <div class="row g-4">
       <div class="col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
         <div class="card feature-card border-0 shadow-sm h-100 text-center p-4">
-          <span style="font-size:2rem;">🏭</span>
+          <i class="bi bi-building feature-icon"></i>
           <h5 class="mt-3">Manufacturing Excellence</h5>
           <p>State-of-the-art facilities with strict quality control standards.</p>
         </div>
       </div>
       <div class="col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
         <div class="card feature-card border-0 shadow-sm h-100 text-center p-4">
-          <span style="font-size:2rem;">🧪</span>
+          <i class="bi bi-flask feature-icon"></i>
           <h5 class="mt-3">Innovative R&D</h5>
           <p>Continuous investment in research for advanced formulations.</p>
         </div>
       </div>
       <div class="col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
         <div class="card feature-card border-0 shadow-sm h-100 text-center p-4">
-          <span style="font-size:2rem;">🌱</span>
+          <i class="bi bi-shield-check feature-icon"></i>
           <h5 class="mt-3">Quality & Safety</h5>
           <p>Commitment to safe, effective, and globally accepted medicines.</p>
         </div>
       </div>
       <div class="col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
         <div class="card feature-card border-0 shadow-sm h-100 text-center p-4">
-          <span style="font-size:2rem;">🌍</span>
+          <i class="bi bi-globe feature-icon"></i>
           <h5 class="mt-3">Global Reach</h5>
-          <p>Serving patients in India and expanding to others countries.</p>
+          <p>Serving patients in India and expanding worldwide.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Leadership Team -->
+<!-- Leadership -->
 <section class="py-5 bg-light">
   <div class="container">
     <h2 class="section-title" data-aos="zoom-in">Our Leadership Team</h2>
     <div class="row g-4">
       <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
         <div class="card team-card text-center p-4 shadow-sm">
-          <h5>Mr. K K Yadav</h5>
-          <p>Director</p>
+          <h5>Mr. K K Yadav</h5><p>Director</p>
         </div>
       </div>
       <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
         <div class="card team-card text-center p-4 shadow-sm">
-          <h5>Mr. Gaurav</h5>
-          <p>Director</p>
-        </div>
-      </div>
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
-        <div class="card team-card text-center p-4 shadow-sm">
-          <h5>Mr. Rohit Kumar</h5>
-          <p>Executive Manager</p>
+          <h5>Mr. Gaurav</h5><p>Director</p>
         </div>
       </div>
       <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
         <div class="card team-card text-center p-4 shadow-sm">
-          <h5>Mr. MD Sarukh</h5>
-          <p>General Manager</p>
+          <h5>Mr. Rohit Kumar</h5><p>Executive Manager</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
+        <div class="card team-card text-center p-4 shadow-sm">
+          <h5>Mr. MD Shahrukh</h5><p>General Manager</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Product Categories -->
-<section class="container py-5">
+<!-- Products -->
+<section class="container py-5" id="products">
   <h2 class="section-title" data-aos="zoom-in">Our Product Range</h2>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
     {% for c in categories %}
@@ -265,20 +281,17 @@
 </section>
 
 <!-- Contact -->
-<section class="bg-primary text-white py-5" data-aos="fade-up">
+<section class="contact-section" id="contact" data-aos="fade-up">
   <div class="container text-center">
     <h2 class="mb-4">Get in Touch</h2>
-    <p class="lead">📧 support@kamgrowpharma.com | 📞 +91 11 69318563</p>
-    <a href="/contact" class="btn btn-light btn-lg rounded-pill btn-custom">Contact Us</a>
+    <p>📧 support@kamgrowpharma.com | 📞 +91 11 69318563</p>
+    <a href="/contact" class="btn btn-light btn-lg btn-custom mt-3">Contact Us</a>
   </div>
 </section>
 
-<!-- AOS Animation JS -->
+<!-- AOS JS -->
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
-  AOS.init({
-    duration: 1000,
-    once: true,
-  });
+  AOS.init({ duration: 1000, once: true });
 </script>
 {% endblock %}
