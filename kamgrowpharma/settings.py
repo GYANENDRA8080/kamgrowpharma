@@ -10,7 +10,8 @@ DEBUG = os.getenv("DEBUG", "1") == "1"
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    "172.20.40.250", 
+    "172.20.40.250",
+    "kamgrowpharma.pythonanywhere.com",  # Add your PythonAnywhere domain
 ]
 
 
@@ -93,6 +94,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
