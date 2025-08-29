@@ -1,24 +1,228 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<div class="p-5 bg-light rounded-3 mb-4">
-  <h1 class="display-6">Welcome to <span class="brand-gradient">KamGrow Pharma</span></h1>
-  <p class="lead">Search medicines, upload prescriptions, and get quick delivery.</p>
-  <a href="/catalog/" class="btn btn-primary btn-lg">Shop Medicines</a>
-  <a href="/prescriptions/upload/" class="btn btn-outline-primary btn-lg">Upload Prescription</a>
-</div>
-<h4 class="mb-3">Popular Categories</h4>
-<div class="row row-cols-1 row-cols-md-3 g-3">
-  {% for c in categories %}
-  <div class="col">
-    <div class="card h-100">
-      <div class="card-body">
-        <h5 class="card-title">{{ c.name }}</h5>
-        <a href="{% url 'catalog:category' c.slug %}" class="stretched-link">Browse</a>
+<!-- AOS Animation CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+/* Hero Section */
+.hero {
+  background: linear-gradient(rgba(29,78,216,0.85), rgba(29,78,216,0.85)),
+              url('https://images.unsplash.com/photo-1581090700227-4c4c1f1d8c4b?auto=format&fit=crop&w=1600&q=80') 
+              no-repeat center/cover;
+  color: #fff;
+  padding: 120px 20px;
+  text-align: center;
+  border-radius: 0 0 50px 50px;
+}
+.hero h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  font-family: 'Montserrat', Arial, sans-serif;
+  letter-spacing: 1px;
+}
+.hero p {
+  font-size: 1.25rem;
+  margin-top: 15px;
+  opacity: 0.9;
+}
+
+/* Buttons */
+.btn-custom {
+  padding: 12px 28px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-custom:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* Features */
+.feature-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 15px;
+}
+.feature-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Section Titles */
+.section-title {
+  font-weight: 700;
+  font-size: 2rem;
+  color: #1d4ed8;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #1d4ed8;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Product Cards */
+.card-img-top {
+  border-radius: 12px 12px 0 0;
+  transition: transform 0.4s ease;
+}
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+</style>
+
+<!-- Hero -->
+<section class="hero" data-aos="fade-down">
+  <div class="container">
+    <h1 data-aos="zoom-in" data-aos-delay="200">KamGrow Pharma 💊</h1>
+    <p data-aos="fade-up" data-aos-delay="400">Innovating Healthcare • Building Trust • Delivering Quality</p>
+    <a href="#about" class="btn btn-light btn-lg mt-4 rounded-pill shadow btn-custom" data-aos="fade-up" data-aos-delay="600">
+      Learn More
+    </a>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="container py-5">
+  <div class="row align-items-center">
+    <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-right">
+      <img src="{% static 'img/logo.jpg' %}"
+           alt="KamGrow Pharma Logo"
+           class="img-fluid rounded shadow-lg">
+    </div>
+    <div class="col-md-6" data-aos="fade-left">
+      <h2 class="section-title">About Us</h2>
+      <p class="lead">
+        KamGrow Pharma is a growing pharmaceutical company from India, committed to providing 
+        <b>high-quality, affordable, and reliable medicines</b>. We believe good health should be within 
+        everyone’s reach, and we work every day to make it possible.
+      </p>
+      <ul class="list-unstyled fs-5">
+        <li>✅ WHO-GMP & ISO Certified Facilities</li>
+        <li>🧪 Research & Development Driven Formulations</li>
+        <li>🌍 Supplying Medicines Across India & Growing Internationally</li>
+        <li>🤝 Strong Partnerships with Healthcare Providers</li>
+      </ul>
+      <p class="mt-3">
+        With a focus on <b>innovation, quality, and patient care</b>, KamGrow Pharma aims to build a trusted name 
+        in healthcare and contribute to a healthier future for all.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Core Strengths -->
+<section class="bg-light py-5">
+  <div class="container">
+    <h2 class="section-title" data-aos="zoom-in">Our Core Strengths</h2>
+    <div class="row g-4">
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="card feature-card border-0 shadow-sm h-100 text-center p-4">
+          <span style="font-size:2rem;">🏭</span>
+          <h5 class="mt-3">Manufacturing Excellence</h5>
+          <p>State-of-the-art facilities with strict quality control standards.</p>
+        </div>
+      </div>
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="card feature-card border-0 shadow-sm h-100 text-center p-4">
+          <span style="font-size:2rem;">🧪</span>
+          <h5 class="mt-3">Innovative R&D</h5>
+          <p>Continuous investment in research for advanced formulations.</p>
+        </div>
+      </div>
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="card feature-card border-0 shadow-sm h-100 text-center p-4">
+          <span style="font-size:2rem;">🌱</span>
+          <h5 class="mt-3">Quality & Safety</h5>
+          <p>Commitment to safe, effective, and globally accepted medicines.</p>
+        </div>
+      </div>
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+        <div class="card feature-card border-0 shadow-sm h-100 text-center p-4">
+          <span style="font-size:2rem;">🌍</span>
+          <h5 class="mt-3">Global Reach</h5>
+          <p>Serving patients in India and expanding to 30+ countries.</p>
+        </div>
       </div>
     </div>
   </div>
-  {% empty %}
-  <p class="text-muted">Add categories in admin to show them here.</p>
-  {% endfor %}
-</div>
+</section>
+<!-- Leadership Team -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="section-title" data-aos="zoom-in">Our Leadership Team</h2>
+    <div class="row g-4">
+      <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="card team-card text-center p-4 shadow-sm">
+          <h5>K K Yadav</h5>
+          <p>Director</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="card team-card text-center p-4 shadow-sm">
+          <h5>Gaurav</h5>
+          <p>Director</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="card team-card text-center p-4 shadow-sm">
+          <h5>MD Sarukh</h5>
+          <p>General Manager</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="card team-card text-center p-4 shadow-sm">
+          <h5>Rohit Kumar</h5>
+          <p>Executive Manager</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Product Categories -->
+<section class="container py-5">
+  <h2 class="section-title" data-aos="zoom-in">Our Product Range</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for c in categories %}
+    <div class="col" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:'1' }}00">
+      <div class="card h-100 border-0 shadow-sm feature-card text-center">
+        <img src="https://images.unsplash.com/photo-1580281657521-43e5021f9f10?auto=format&fit=crop&w=600&q=80"
+             class="card-img-top" alt="{{ c.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ c.name }}</h5>
+          <p class="card-text text-muted">High-quality formulations ensuring patient well-being.</p>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col text-center">
+      <p class="text-muted">Add product categories in admin to display here.</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="bg-primary text-white py-5" data-aos="fade-up">
+  <div class="container text-center">
+    <h2 class="mb-4">Get in Touch</h2>
+    <p class="lead">📧 support@kamgrowpharma.com | 📞 +91 11 69318563</p>
+    <a href="/contact" class="btn btn-light btn-lg rounded-pill btn-custom">Contact Us</a>
+  </div>
+</section>
+
+<!-- AOS Animation JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true,
+  });
+</script>
 {% endblock %}
