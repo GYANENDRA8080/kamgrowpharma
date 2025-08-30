@@ -10,7 +10,7 @@ DEBUG = os.getenv("DEBUG", "1") == "1"
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    "172.20.40.250",
+    "172.20.40.182",
     "kamgrowpharma.pythonanywhere.com",  # Add your PythonAnywhere domain
 ]
 
